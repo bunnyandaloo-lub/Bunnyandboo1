@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { FadeIn } from './ui/FadeIn';
 import { Journal } from './Journal';
@@ -53,7 +52,6 @@ export const Sanctuary: React.FC<SanctuaryProps> = ({ userMode }) => {
   const [isDark, setIsDark] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const [showJournalHistory, setShowJournalHistory] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [heartCount, setHeartCount] = useState(0);
@@ -75,17 +73,6 @@ export const Sanctuary: React.FC<SanctuaryProps> = ({ userMode }) => {
   };
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
-    const img = new Image();
-    img.src = INTRO_IMAGE_URL;
-    const handleLoad = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.overflow = '';
-      }, 2000);
-    };
-    if (img.complete) handleLoad(); else img.onload = handleLoad;
-
     calculateDailyHearts();
     const interval = setInterval(calculateDailyHearts, 30000); // Check every 30s
 
@@ -97,7 +84,6 @@ export const Sanctuary: React.FC<SanctuaryProps> = ({ userMode }) => {
     }
 
     return () => {
-      document.body.style.overflow = '';
       clearInterval(interval);
     };
   }, []);
@@ -129,14 +115,6 @@ export const Sanctuary: React.FC<SanctuaryProps> = ({ userMode }) => {
       setIsSendingHeart(false);
     }
   };
-
-  if (isLoading) {
-    return (
-      <div className="fixed inset-0 z-[100] bg-paper flex items-center justify-center">
-        <div className="text-mist text-xs tracking-[0.3em] uppercase animate-pulse">...</div>
-      </div>
-    );
-  }
 
   return (
     <>

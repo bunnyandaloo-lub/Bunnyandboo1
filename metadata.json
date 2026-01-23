@@ -1,5 +1,5 @@
 {
-  "name": "Bunny and Boo's Space",
+  "name": "Bunny and Boo",
   "description": "A private, minimalist digital presence app for Bunny & Boo.",
   "requestFramePermissions": [
     "microphone"
