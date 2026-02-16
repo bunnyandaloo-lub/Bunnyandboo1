@@ -10,3 +10,4 @@ export const INTRO_IMAGE_URL = "https://res.cloudinary.com/dnpjnknro/image/uploa
 export const MIRROR_IMAGE_URL = "https://res.cloudinary.com/dnpjnknro/image/upload/v1765741271/mirror_ly5dhc.jpg";
 export const FOOTPRINTS_IMAGE_URL = "https://res.cloudinary.com/dnpjnknro/image/upload/v1765741777/Screenshot_2025-12-15_002935_ftrxtw.png";
 export const IMAGE_3_URL = "https://res.cloudinary.com/dnpjnknro/image/upload/v1765741785/Screenshot_2025-12-15_003027_hrowv9.png";
+export const FAREWELL_IMAGE_URL = "https://res.cloudinary.com/dnpjnknro/image/upload/v1771224971/20251206_120903_nemf3s.jpg";
