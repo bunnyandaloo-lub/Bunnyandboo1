@@ -17,7 +17,7 @@ export interface ImageProps {
 export interface JournalProps {
     isDark: boolean;
     onReflect: () => void;
-    userMode: UserMode; // Added to JournalProps
+    userMode: UserMode;
 }
 
 export interface ChatProps {
@@ -32,6 +32,7 @@ export interface EchoProps {
 
 export interface SanctuaryProps {
     userMode: UserMode;
+    onStartFarewell?: () => void;
 }
 
 export interface JournalHistoryViewerProps {

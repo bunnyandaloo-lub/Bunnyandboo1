@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Gate } from './components/Gate';
 import { Sanctuary } from './components/Sanctuary';
 import { IntroSequence } from './components/IntroSequence';
+import { FarewellFlow } from './components/FarewellFlow';
 import { UserMode } from './types';
 import { fetchLogs } from './utils/logger';
 
@@ -9,7 +10,7 @@ const ALIYA_KEY = "Bunnylovesme";
 const ADMIN_KEY = "Aliyalovesme";
 const SESSION_KEY = "sanctuary_session_v1";
 
-type AppStage = 'GATE' | 'INTRO' | 'SANCTUARY';
+type AppStage = 'GATE' | 'INTRO' | 'SANCTUARY' | 'FAREWELL';
 
 const App: React.FC = () => {
   const [stage, setStage] = useState<AppStage>('GATE');
@@ -24,7 +25,7 @@ const App: React.FC = () => {
         const parsed = JSON.parse(savedSession);
         if (parsed.mode) {
           setUserMode(parsed.mode);
-          setStage('SANCTUARY'); // Skip intro on session resume
+          setStage('SANCTUARY');
         }
       } catch (e) {
         localStorage.removeItem(SESSION_KEY);
@@ -76,7 +77,15 @@ const App: React.FC = () => {
           onComplete={() => setStage('SANCTUARY')} 
         />
       )}
-      {stage === 'SANCTUARY' && <Sanctuary userMode={userMode} />}
+      {stage === 'SANCTUARY' && (
+        <Sanctuary 
+          userMode={userMode} 
+          onStartFarewell={() => setStage('FAREWELL')}
+        />
+      )}
+      {stage === 'FAREWELL' && (
+        <FarewellFlow onCancel={() => setStage('SANCTUARY')} />
+      )}
     </>
   );
 };
